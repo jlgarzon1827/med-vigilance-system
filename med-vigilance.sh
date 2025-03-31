@@ -52,12 +52,6 @@ start_services() {
   
   echo "Esperando a que los servicios estén listos..."
   sleep 5
-  
-  echo "Aplicando migraciones en el backend..."
-  docker-compose exec backend python manage.py migrate || {
-    echo "Error al aplicar las migraciones. Verifica los logs del contenedor backend."
-    exit 1
-  }
 }
 
 # Función para verificar servicios activos
