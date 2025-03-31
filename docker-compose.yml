@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+    container_name: django_backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend/db.sqlite3:/MedialertServer/db.sqlite3
+    environment:
+      - ALLOWED_HOSTS=med-vigilance,localhost,127.0.0.1,192.168.1.70
+    command: /MedialertServer/entrypoint.sh python manage.py runserver 0.0.0.0:8000
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: vue_frontend
+    ports:
+      - "8080:8080"
+    environment:
+      - VUE_APP_BACKEND_URL=http://med-vigilance:8000
