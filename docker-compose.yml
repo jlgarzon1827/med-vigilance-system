@@ -10,7 +10,7 @@ services:
     volumes:
       - ./backend/db.sqlite3:/MedialertServer/db.sqlite3
     environment:
-      - ALLOWED_HOSTS=med-vigilance,localhost,127.0.0.1,192.168.1.70
+      - DJANGO_ALLOWED_HOSTS=med-vigilance,localhost,127.0.0.1,192.168.1.70
 
   frontend:
     build:
